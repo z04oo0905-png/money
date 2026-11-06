@@ -678,15 +678,17 @@ const CS={code:'auto',busy:0,again:0,t:null,last:0,err:''};
 async function csReq(method,body){
   const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),15000);
   try{
-    const r=await fetch('/api/sync',{method,headers:{'x-sync-code':CS.code,'content-type':'application/json'},body:body?JSON.stringify(body):undefined,signal:ac.signal,cache:'no-store'});
+    let r;try{r=await fetch('/api/sync',{method,headers:{'x-sync-code':CS.code,'content-type':'application/json'},body:body?JSON.stringify(body):undefined,signal:ac.signal,cache:'no-store'})}
+    catch(e){if(e&&e.name==='AbortError')throw e;throw new Error('無法連線到伺服器（網路中斷？）')}
     let j=null;try{j=await r.json()}catch(e){}
-    if(!r.ok)throw new Error((j&&j.error)||(r.status===404?'找不到 /api/sync（尚未部署同步功能）':'HTTP '+r.status));
+    if(!r.ok)throw new Error((j&&j.error)||(r.status===404?'找不到 /api/sync：api/sync.js 沒有部署到這個網址':r.status===401||r.status===403?'API 被 Vercel 保護擋住（請改用正式網址，或到 Vercel 關閉 Deployment Protection）':'伺服器錯誤 HTTP '+r.status));
+    if(!j||typeof j!=='object')throw new Error('/api/sync 沒有回傳資料：可能沒部署，或被 Vercel 保護頁擋住');
     return j}
   finally{clearTimeout(tm)}}
 async function cloudSync(manual){
   if(!CS.code)return;
   if(CS.busy){CS.again=1;return}
-  CS.busy=1;
+  CS.busy=1;csBar();
   try{
     const res=await csReq('GET'),R=res&&res.data;let pulled=0,push=true,st={add:0,upd:0,del:0};
     if(R&&R.tx&&R.cards){
@@ -699,8 +701,13 @@ async function cloudSync(manual){
     CS.last=Date.now();CS.err='';
     if(manual)toast(pulled?`已同步：新增 ${st.add}、更新 ${st.upd}、刪除 ${st.del} 筆`:'已同步，資料是最新的');
   }catch(e){CS.err=e&&e.name==='AbortError'?'連線逾時':(e.message||'同步失敗');if(manual)toast('同步失敗：'+CS.err)}
-  finally{CS.busy=0;if(typeof TAB!=='undefined'&&TAB===3&&!/INPUT|SELECT|TEXTAREA/.test((document.activeElement||{}).tagName||''))settings();
+  finally{CS.busy=0;csBar();if(typeof TAB!=='undefined'&&TAB===3&&!/INPUT|SELECT|TEXTAREA/.test((document.activeElement||{}).tagName||''))settings();
     if(CS.again){CS.again=0;cloudSoon()}}}
+function csBar(){let e=document.getElementById('csb');
+  if(!e){e=document.createElement('div');e.id='csb';e.onclick=()=>cloudSync(true);const h=document.querySelector('header');if(h)h.insertAdjacentElement('afterend',e);else document.body.prepend(e)}
+  const tm=CS.last?new Date(CS.last).toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}):'';
+  e.style.cssText='max-width:560px;margin:0 auto;padding:2px 16px 4px;font-size:12px;line-height:1.4;cursor:pointer;'+(CS.err?'color:var(--rd);font-weight:600':'color:var(--mu)');
+  e.textContent=CS.err?'⚠ 雲端同步失敗：'+CS.err+'（點此重試）':CS.busy?'☁ 同步中…':tm?'☁ 已同步 '+tm:'☁ 同步準備中…'}
 function cloudSoon(){if(!CS.code)return;CS.dirty=1;clearTimeout(CS.t);CS.t=setTimeout(()=>cloudSync(),300)}
 function csPanel(){
   const tm=CS.last?new Date(CS.last).toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}):'';
