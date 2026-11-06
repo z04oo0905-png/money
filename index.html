@@ -342,6 +342,94 @@ details.cdadd{margin:10px 0 0;border-top:1px solid var(--ln);padding-top:6px}
 .rwi{flex:0 0 auto;gap:3px}.rwi input{width:56px;min-height:30px;padding:2px 6px;font-size:13px}
 .rw .rs{flex:0 0 auto;padding:2px 8px;font-size:11.5px}
 @media(max-width:340px){.rw{font-size:11px;gap:4px;padding:0 10px 12px}.rwi input{width:46px}.rw .rs{padding:2px 6px;font-size:11px}}
+
+/* ===== v6：卡費卡片（分期／本期消費分區）===== */
+.nh .bw{text-align:right;flex:none}
+.nh .bw i{display:block;font-style:normal;font-size:11px;color:var(--mu);margin-bottom:1px}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:10px 0 4px;padding:8px 12px;background:var(--bg);border-radius:12px;font-size:12px;color:var(--mu)}
+.eq b{color:var(--tx);font-size:13px;margin-left:2px}.eq em{font-style:normal;opacity:.6}
+.sc{margin-top:12px}
+.sh2{display:flex;justify-content:space-between;align-items:baseline;padding:0 2px 6px;border-bottom:2px solid color-mix(in srgb,var(--bc,var(--ac)) 30%,transparent)}
+.sh2 b{font-size:14px;color:var(--bc,var(--ac))}.sh2 em{font-style:normal;font-size:12px;color:var(--mu);margin-left:8px}
+.ss2{font-weight:700;font-size:14px;color:var(--rd)}
+.ir{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln)}
+.ir:last-child{border-bottom:0}
+.ir.emp{justify-content:center;padding:12px 0}
+.ir.pre{opacity:.65}
+.ir .il{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ir .il b{font-size:14.5px;font-weight:600;overflow-wrap:anywhere}
+.ir .il .mu{font-size:12px}
+.ir .ia{display:flex;align-items:center;gap:8px;flex:none;font-weight:700;font-size:15px;white-space:nowrap}
+.ir .mvs{display:flex;gap:4px}
+.ir .il .tg{white-space:nowrap}
+.pg{height:5px;border-radius:9px;background:color-mix(in srgb,var(--bc,var(--ac)) 14%,transparent);overflow:hidden;max-width:180px}
+.pg span{display:block;height:100%;background:var(--bc,var(--ac));border-radius:9px}
+.rwb{display:flex;justify-content:space-between;gap:6px;margin-top:12px;padding:8px 12px;background:var(--bg);border-radius:12px;font-size:12px;color:var(--mu)}
+.rwb b{color:inherit;font-size:13px;margin-left:2px}.rwb span:not(.bad):not(.in) b{color:var(--tx)}
+.gp.bank .cb+.cb{margin-top:18px;padding-top:18px;border-top:1px solid var(--ln)}
+
+/* ===== v7 ===== */
+.eq{display:flex;align-items:flex-end;gap:6px;padding:8px 10px;flex-wrap:nowrap}
+.eq em{font-style:normal;color:var(--mu);padding-bottom:7px;font-size:13px}
+.eq em:last-of-type{display:none}
+.ef{flex:1 1 0;min-width:0;margin:0;display:flex;flex-direction:column;gap:1px}
+.ef i{font-style:normal;font-size:11px;color:var(--mu)}
+.ef input.tin{width:100%;min-width:0;height:26px;min-height:0;padding:0 2px;border:0;border-bottom:1px dashed var(--ln);border-radius:0;background:transparent;font-weight:700;font-size:clamp(12px,3.6vw,14.5px);text-align:left;color:var(--tx)}
+.ef.in input.tin{color:var(--ac)}
+.ef.ov i::after{content:" •";color:var(--ac)}
+details.sc>summary{list-style:none;cursor:pointer}
+details.sc>summary::-webkit-details-marker{display:none}
+.chv{display:inline-block;width:7px;height:7px;margin-left:10px;border-right:2px solid var(--mu);border-bottom:2px solid var(--mu);transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+details[open]>summary .chv{transform:rotate(-135deg) translateY(-2px)}
+.ir.adj{opacity:.75;background:color-mix(in srgb,var(--rd) 4%,transparent)}
+.ir.adj .il b{font-weight:500}
+
+/* ===== v8：卡片頁籤、明細列緊湊化 ===== */
+.ctabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 56px);z-index:4;display:flex;gap:6px;overflow-x:auto;margin:10px -14px 0;padding:8px 14px;background:var(--sf);border-bottom:1px solid var(--ln);scrollbar-width:none}
+.ctabs::-webkit-scrollbar{display:none}
+.ctab{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:5px 12px;border-radius:99px;background:var(--bg);color:var(--tx);border:1.5px solid transparent;font-size:13px;font-weight:600;white-space:nowrap}
+.ctab i{width:8px;height:8px;border-radius:50%;background:var(--bc)}
+.ctab small{font-size:11px;font-weight:600;color:var(--mu)}
+.ctab.on{background:color-mix(in srgb,var(--bc) 14%,var(--sf));border-color:var(--bc);color:var(--bc)}
+.ctab.on small{color:inherit}
+.cb{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 112px)}
+.a1,.a2,.ss2,.ir .ia,.bz,.rw2 b,.st b,.tl b,.dh span{font-variant-numeric:tabular-nums}
+.sm2{padding:10px 14px 8px;gap:10px;align-items:flex-start}
+.sm2 .sl{min-width:0}
+.sm2 .sn{font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.sm2 .ss{margin-top:1px;line-height:1.5}
+.sm2 .ss .tg{margin-left:2px;vertical-align:1px}
+.sm2 .r{flex:none}
+.sm2 .a1{font-size:16px;line-height:1.3}
+.sm2 .a2{font-size:12px;margin-top:1px;color:var(--mu)}
+.rw2{display:grid;grid-template-columns:.85fr 1fr 1.15fr 1.1fr;align-items:center;gap:6px;margin:0 10px 10px;padding:6px 10px;background:var(--bg);border-radius:10px;font-size:12px;white-space:nowrap}
+.rw2 span,.rw2 label{display:flex;align-items:baseline;gap:4px;margin:0;min-width:0}
+.rw2 i{font-style:normal;font-size:11px;color:var(--mu)}
+.rw2 b{font-size:13px;font-weight:700;color:var(--tx)}
+.rwi2{align-items:center!important}
+.rw2 input{width:100%;min-width:0;min-height:26px;height:26px;padding:0 6px;font-size:13px;border-radius:7px;text-align:right}
+.rs2{justify-content:flex-end;font-size:12px;font-weight:700}
+.rs2.no{color:var(--rd)}.rs2.yes{color:var(--ac)}
+.pn .en+.en{border-top:1px solid var(--ln)}
+.dh{margin:14px 4px 6px}
+@media(max-width:340px){.rw2{grid-template-columns:1fr 1fr;row-gap:4px}}
+
+/* ===== v9：明細一排、銀行符號頁籤 ===== */
+.sm2.one{display:flex;align-items:center;gap:8px;padding:12px 14px}
+.sm2.one .sn{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.sm2.one .ss{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin:0}
+.sm2.one .ex{flex:none;font-size:11.5px;color:var(--mu);white-space:nowrap}
+.sm2.one .tg{flex:none;margin:0;font-size:11px;padding:1px 8px}
+.sm2.one .a1{flex:none;min-width:58px;text-align:right;font-size:16px;white-space:nowrap}
+.dtl{padding:2px 14px 14px;font-size:13px;display:grid;gap:8px}
+.dtl .rw2{margin:0}
+.ctabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 56px);z-index:4;display:grid;grid-template-columns:repeat(auto-fit,minmax(54px,1fr));gap:4px;overflow:visible;margin:10px -14px 0;padding:8px 10px 6px;background:var(--sf);border-bottom:1px solid var(--ln)}
+.ctab{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:0;padding:4px 2px;border-radius:12px;background:none;color:var(--mu);border:0;font-size:10.5px;font-weight:600;min-width:0}
+.ctab i{font-style:normal;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--bc) 14%,var(--sf));color:var(--bc);font-size:14px;font-weight:800;border:2px solid transparent}
+.ctab span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ctab.on{color:var(--tx)}
+.ctab.on i{background:var(--bc);color:#fff;border-color:color-mix(in srgb,var(--bc) 35%,var(--sf))}
+.ctab.fin{opacity:.55}
 </style>
 </head>
 <body>
@@ -481,7 +569,7 @@ if(S.pv!==PV){S.cards.forEach(c=>{const d=DEF.find(x=>x.n===c.n);if(!d)return;
   const keep=(c.perks||[]).filter(p=>p.ed||p.u);
   c.perks=d.perks.map(p=>keep.find(k=>k.n===p.n)||{...p}).concat(keep.filter(k=>!d.perks.some(p=>p.n===k.n)))});
   S.pv=PV}
-S.inst=S.inst||[];S.cd=S.cd||{};S.paid=S.paid||{};S.bo=S.bo||{};S.bals=S.bals||{};S.rf=S.rf||{};S.misc=S.misc||{};S.theme=S.theme||'forest';S.cards.forEach(c=>{c.a=c.a||c.n.slice(0,2);c.perks=c.perks||[]});
+S.inst=S.inst||[];S.brandMap=S.brandMap||{};S.cd=S.cd||{};S.paid=S.paid||{};S.bo=S.bo||{};S.bals=S.bals||{};S.rf=S.rf||{};S.misc=S.misc||{};S.theme=S.theme||'forest';S.cards.forEach(c=>{c.a=c.a||c.n.slice(0,2);c.perks=c.perks||[]});
 const save=()=>{S.ts=Date.now();try{localStorage.setItem('acct2',JSON.stringify(S))}catch(e){}};
 const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
 const card=n=>S.cards.find(c=>c.n===n);
@@ -502,17 +590,19 @@ function toast(m){const e=$('#ts');e.textContent=m;e.style.display='block';setTi
 const stale=()=>{const o=S.cards.map(c=>c.asof).filter(Boolean).sort()[0];return o&&(Date.now()-new Date(o))/864e5>30?`<div class="mu bad" style="margin:2px 4px">⚠ 卡片權益整理於 ${o}，已超過 30 天，建議請 Claude 重新查詢更新。</div>`:''};
 function entry(t){
   const open=OPEN===t.id,p=pend(t),ra=Math.round(t.ra),got=Math.round(t.got||0);
-  const r=(t.amt?`<div class="a1">${money(t.amt)}</div>`:'')+(t.amt&&t.ex!==t.amt?`<div class="a2">支出 ${money(t.ex)}</div>`:'')+(t.inc?`<div class="${t.amt?'a2':'a1 in'}">收入 +${money(t.inc)}</div>`:'');
-  const tg=(t.up?'<span class="tg no">未繳款</span>':'')+(p?'<span class="tg wn">回饋未收齊</span>':'');
+  const chips=(t.up?'<span class="tg no">未繳</span>':'')+(p?`<span class="tg wn">未收 ${money(Math.max(0,ra-got))}</span>`:'');
+  const ex=t.amt&&t.ex!==t.amt?`<span class="ex">支出 ${fmt(t.ex)}</span>`:'';
+  const amt=t.amt?`<span class="a1">${money(t.amt)}</span>`:(t.inc?`<span class="a1 in">+${money(t.inc)}</span>`:'<span class="a1"></span>');
   let d='';
   if(open){
-    const L=[t.dt?['明細',esc(t.dt)]:0,t.fee?['手續費',money(t.fee)]:0,t.n>1?['分期',`${t.n} 期，每期 ${money(t.ia)}`]:0,t.amt?['付款',t.up?'<b class="bad">未繳款</b>':'已繳款（結案）']:0].filter(Boolean);
-    d=`<div class="dtl">${L.map(x=>`<div><span class="mu">${x[0]}　</span>${x[1]}</div>`).join('')}
+    const L=[['分類',esc(t.cat)],['付款',`${esc(t.pay)}${t.perk?' · '+esc(t.perk):''}${t.amt?(t.up?' · <b class="bad">未繳款</b>':' · 已繳款'):''}`],t.amt&&t.ex!==t.amt?['我的支出',money(t.ex)]:0,t.inc&&t.amt?['收入','+'+money(t.inc)]:0,t.dt?['明細',esc(t.dt)]:0,t.fee?['手續費',money(t.fee)]:0,t.n>1?['分期',`${t.n} 期，每期 ${money(t.ia)}`]:0].filter(Boolean);
+    const rw=t.ra>0?`<div class="rw2"><span><i>回饋</i><b>${t.rp}%</b></span><span><i>應得</i><b>${money(ra)}</b></span><label class="rwi2"><i>已收</i><input class="mny" inputmode="decimal" data-got="${t.id}" value="${fm(t.got)}" placeholder="0"></label><span class="rs2 ${p?'no':'yes'}">${p?'未收 '+money(Math.max(0,ra-got)):'✓ 已收齊'}</span></div>`:'';
+    d=`<div class="dtl">${L.map(x=>`<div><span class="mu">${x[0]}　</span>${x[1]}</div>`).join('')}${rw}
     <div><label>備註</label><input data-note="${t.id}" value="${esc(t.note)}"></div>
     ${t.amt?`<button class="s sm" data-act="pay" data-id="${t.id}">${t.up?'標示為已繳款':'標示為未繳款'}</button>`:''}
     <div class="g2"><button class="s sm" data-act="ed" data-id="${t.id}">編輯</button><button class="s sm" data-act="del" data-id="${t.id}">刪除</button></div></div>`}
-  const rw=t.ra>0?`<div class="rw"><span>回饋 ${t.rp}%　應得 <b>${money(ra)}</b></span><span class="rwi">已收 <input class="mny" inputmode="decimal" data-got="${t.id}" value="${fm(t.got)}" placeholder="0"></span><span class="rs ${p?'no':'yes'}">${p?'未收 '+money(Math.max(0,ra-got)):'✓ 已收齊'}</span></div>`:'';
-  return `<div class="en"><div class="sm2" data-act="tg" data-id="${t.id}"><div><div class="sn">${esc(t.shop||t.cat)}</div><div class="ss">${esc(t.cat)} · ${esc(t.pay)}${t.perk?' · '+esc(t.perk):''}</div>${tg?`<div class="tgs">${tg}</div>`:''}</div><div class="r">${r}</div></div>${rw}${d}</div>`}
+  return `<div class="en"><div class="sm2 one" data-act="tg" data-id="${t.id}"><span class="sn">${esc(t.shop||t.cat)}</span>${ex}${chips}${amt}</div>${d}</div>`}
+
 function cal(mm){
   const[y,m]=HM.split('-').map(Number),first=new Date(y,m-1,1).getDay(),n=new Date(y,m,0).getDate(),has={},td=today();
   mm.forEach(t=>has[t.date]=(has[t.date]||0)+1);
@@ -618,21 +708,29 @@ function stats(){
 const OP=new Set();
 document.addEventListener('toggle',e=>{const d=e.target.dataset;if(d&&d.cn)e.target.open?OP.add(d.cn):OP.delete(d.cn)},true);
 function cardBlock(x){
-  const c=x.c,M=x.M,it=x.items.slice().sort((p,q)=>p.date<q.date?-1:p.date>q.date?1:p.id-q.id),r=[];
-  const neg=v=>`<span class="bad">${sg(-v)}</span>`;
-  it.forEach(t=>{const tg=(t.first?`<button class="tg wn" data-act="auto" data-id="${t.id}" title="還原為依結帳日自動歸屬">手動 ✕</button>`:'')+(nearEdge(t,c,M)?'<span class="tg no">近結帳日</span>':'');
-    r.push(`<div class="cr"><span class="lf"><button class="ck${t.ok?' on':''}" data-act="ok" data-id="${t.id}" aria-label="確認列入本期">✓</button><span><span class="mu">${t.date.slice(5).replace('-','/')}</span> ${esc(t.shop||t.cat)}${tg}</span></span><span class="rt">${neg(t.amt)}<button class="mv" data-act="mv" data-id="${t.id}" data-d="-1" aria-label="移到上一期帳單">‹</button><button class="mv" data-act="mv" data-id="${t.id}" data-d="1" aria-label="移到下一期帳單">›</button></span></div>`)});
-  if(x.fee)r.push(`<div class="cr"><span class="mu">手續費</span>${neg(x.fee)}</div>`);
-  x.inst.forEach(q=>r.push(`<div class="cr"><span><span class="mu">分期</span> ${esc(q.t.shop)} <span class="mu">${q.k+1}/${q.t.n} 期・剩 ${q.t.n-q.k-1} 期</span></span>${neg(q.t.ia)}</div>`));
-  x.pre.forEach(q=>r.push(`<div class="cr mu"><span>分期 ${esc(q.i.item)}　${ym2(q.st)} 起・共 ${q.i.n} 期</span><span>每期 ${money(q.i.per)}</span></div>`));
-  const n=it.length+x.inst.length,okn=it.filter(t=>t.ok).length;
-  const adj=x.adj.slice().sort((p,q)=>p.t.date<q.t.date?-1:1).map(({t,st})=>`<div class="cr"><span><span class="mu">${t.date.slice(5).replace('-','/')}</span> ${esc(t.shop||t.cat)} <span class="mu">${ym2(st)} 帳單${t.first?'（手動）':''}</span></span><span class="rt">${neg(t.amt)}<button class="mv" data-act="pull" data-id="${t.id}" data-ym="${ml(M)}">計入本期</button>${t.first?`<button class="mv" data-act="auto" data-id="${t.id}">還原</button>`:''}</span></div>`).join('');
-  const tile=(lab,cls,attr,val,ov)=>`<div class="tl1 ${cls}${ov?' ov':''}"><i>${lab}</i><input class="mny tin" inputmode="decimal" ${attr} value="${fm(val)}" placeholder="0"></div>`;
-  return `<div class="cb"><div class="nh"><div class="nm"><b>${esc(c.n)}</b><span class="sb">${cyRange(c,M)}・${n} 筆</span></div><b class="bz ${x.bill?'bad':'in'}">${x.bill?sg(-x.bill):'$0'}</b></div><div class="t4">${tile('點數折抵','in',`data-p="${esc(x.key)}"`,x.p)}${tile('累積分期','',`data-o="${esc(x.key)}" data-f="ip"`,x.ip,x.ov.ip!==undefined)}${tile('累積卡費','',`data-o="${esc(x.key)}" data-f="sp"`,x.spend,x.ov.sp!==undefined)}${tile('退款','in',`data-r="${esc(x.key)}"`,x.rf)}</div>
-  <details class="cd" data-cn="${esc(c.n)}"${OP.has(c.n)?' open':''}><summary><span class="cn">消費與分期明細</span></summary>
-  ${r.join('')||'<div class="cr mu">這期沒有消費</div>'}
-  <div class="cr mu"><span>回饋 預估 ${fmt(x.rew)}　已入帳 ${fmt(x.gt)}</span><span class="${x.un>=.5?'bad':''}">未收 ${fmt(x.un)}</span></div>
-  ${adj?`<div class="cr mu" style="margin-top:6px"><span>近結帳日・其他帳期的消費</span></div>${adj}`:''}</details></div>`}
+  const c=x.c,M=x.M,it=x.items.slice().sort((p,q)=>p.date<q.date?-1:p.date>q.date?1:p.id-q.id);
+  const neg=v=>`<span class="bad">${sg(-v)}</span>`,md=d=>d.slice(5).replace('-','/');
+  // 分期
+  const insSum=x.inst.reduce((q,y)=>q+y.t.ia,0);
+  const insRows=x.inst.map(q=>{const cur=q.k+1,tot=q.t.n,left=tot-cur;
+    return `<div class="ir"><div class="il"><b>${esc(q.t.shop)}</b><span class="mu">第 ${cur}／${tot} 期${left>0?`・剩 ${left} 期`:'・最後一期'}</span></div><div class="ia">${neg(q.t.ia)}</div></div>`}).join('');
+  const preRows=x.pre.map(q=>`<div class="ir pre"><div class="il"><b>${esc(q.i.item)}</b><span class="mu">${ym2(q.st)} 開始・共 ${q.i.n} 期</span></div><div class="ia mu">每期 ${money(q.i.per)}</div></div>`).join('');
+  // 本期消費（含近結帳日、屬其他帳期的消費，同一份清單）
+  const spSum=it.reduce((q,t)=>q+t.amt,0)+(x.fee||0);
+  const spRows=it.map(t=>{const tg=(t.first?`<button class="tg wn" data-act="auto" data-id="${t.id}" title="還原為依結帳日自動歸屬">手動 ✕</button>`:'')+(nearEdge(t,c,M)?'<span class="tg no">近結帳日</span>':'');
+    return `<div class="ir"><button class="ck${t.ok?' on':''}" data-act="ok" data-id="${t.id}" aria-label="確認列入本期">✓</button><div class="il"><b>${esc(t.shop||t.cat)}</b><span class="mu">${md(t.date)}${tg}</span></div><div class="ia">${neg(t.amt)}<span class="mvs"><button class="mv" data-act="mv" data-id="${t.id}" data-d="-1" aria-label="移到上一期帳單">‹</button><button class="mv" data-act="mv" data-id="${t.id}" data-d="1" aria-label="移到下一期帳單">›</button></span></div></div>`}).join('')
+    +(x.fee?`<div class="ir"><div class="il"><b class="mu">手續費</b></div><div class="ia">${neg(x.fee)}</div></div>`:'')
+    +x.adj.slice().sort((p,q)=>p.t.date<q.t.date?-1:1).map(({t,st})=>`<div class="ir adj"><div class="il"><b>${esc(t.shop||t.cat)}</b><span class="mu">${md(t.date)}　屬 ${ym2(st)} 帳單${t.first?'（手動）':''}</span></div><div class="ia mu">${sg(-t.amt)}<span class="mvs"><button class="mv" data-act="pull" data-id="${t.id}" data-ym="${ml(M)}">計入本期</button>${t.first?`<button class="mv" data-act="auto" data-id="${t.id}">還原</button>`:''}</span></div></div>`).join('');
+  const spCnt=it.length+' 筆'+(x.adj.length?`・另有 ${x.adj.length} 筆近結帳日`:'');
+  const spKey=c.n+'|sp';
+  const inKey=c.n+'|in';
+  const sec1=`<details class="sc inst" data-cn="${esc(inKey)}"${OP.has(inKey)?' open':''}><summary class="sh2"><span><b>分期</b><em>${x.inst.length} 筆${x.pre.length?`・另有 ${x.pre.length} 筆未開始`:''}</em></span><span class="ss2">${insSum?sg(-insSum):'$0'}<i class="chv"></i></span></summary>${insRows+preRows||'<div class="ir emp mu">這期沒有分期</div>'}</details>`;
+  const sec2=`<details class="sc spend" data-cn="${esc(spKey)}"${OP.has(spKey)?' open':''}><summary class="sh2"><span><b>本期消費</b><em>${spCnt}</em></span><span class="ss2">${spSum?sg(-spSum):'$0'}<i class="chv"></i></span></summary>${spRows||'<div class="ir emp mu">這期沒有一般刷卡消費</div>'}</details>`;
+  const fld=(lab,cls,attr,val,ov)=>`<label class="ef ${cls}${ov?' ov':''}"><i>${lab}</i><input class="mny tin" inputmode="decimal" ${attr} value="${fm(val)}" placeholder="0"></label>`;
+  const eq=`<div class="eq">${fld('分期','',`data-o="${esc(x.key)}" data-f="ip"`,x.ip,x.ov.ip!==undefined)}<em>＋</em>${fld('消費','',`data-o="${esc(x.key)}" data-f="sp"`,x.spend,x.ov.sp!==undefined)}<em>－</em>${fld('點數','in',`data-p="${esc(x.key)}"`,x.p)}<em>退</em>${fld('退款','in',`data-r="${esc(x.key)}"`,x.rf)}</div>`;
+  return `<div class="cb" id="cb-${S.cards.findIndex(z=>z.n===c.n)}"><div class="nh"><div class="nm"><b>${esc(c.n)}</b><span class="sb">結帳區間 ${cyRange(c,M)}</span></div><div class="bw"><i>本期帳單</i><b class="bz ${x.bill?'bad':'in'}">${x.bill?sg(-x.bill):'$0'}</b></div></div>
+  ${eq}${sec1}${sec2}
+  <div class="rwb"><span>回饋 預估 <b>${fmt(x.rew)}</b></span><span>已入帳 <b>${fmt(x.gt)}</b></span><span class="${x.un>=.5?'bad':'in'}">未收 <b>${fmt(x.un)}</b></span></div></div>`}
 function flowMonths(){
   const base=today().slice(0,7),done=k=>{const d=calcM(k).accts.filter(a=>a.due>0);return d.length>0&&d.every(a=>a.paid)};
   let list=[];for(let i=0;i<24&&list.length<3;i++){const k=shift(base,i);if(!done(k))list.push(k)}
@@ -650,11 +748,12 @@ function flowView(){
   const fin0=a=>{const x=cur.accts.find(y=>y.a===a);return x.paid||x.due<=0?1:0};
   const groups=Object.keys(cur.G).sort((p,q)=>fin0(p)-fin0(q)).map(a=>{const x=cur.accts.find(y=>y.a===a),col=PAL[accList.indexOf(a)%PAL.length],cs=cur.G[a];
     return `<div class="gp bank${x.paid?' fin':''}" style="--bc:${col}"><div class="bh2"><span class="bn">${esc(a)}</span><span class="bm">${cs.length} 張卡</span><span class="bd">${x.paid?'✓ 已繳清':money(x.due)}</span></div>${cs.map(cardBlock).join('')}<div class="ar"><div class="tl1"><i>${esc(a)} 活存</i><input class="mny tin" inputmode="decimal" data-b="${esc(x.key)}" value="${fm(x.bal)}" placeholder="0"></div><div class="tl1 lk ${x.lack?'bad':'in'}"><i>${x.lack?'還差':'活存'}</i><b>${x.lack?sg(-x.lack):'足夠'}</b></div></div><button class="pdb" data-act="paid" data-k="${esc(x.key)}">${x.paid?'取消已繳清':'✓ 標記已繳清'}</button></div>`}).join('');
+  const tabs=(()=>{const L=[];Object.keys(cur.G).sort((p,q)=>fin0(p)-fin0(q)).forEach(a=>{const col=PAL[accList.indexOf(a)%PAL.length];cur.G[a].forEach(x=>{const nm=x.c.n.startsWith(a)&&x.c.n.length>a.length?x.c.n.slice(a.length):x.c.n;L.push(`<button class="ctab${fin0(a)?' fin':''}" style="--bc:${col}" data-act="cjump" data-i="${S.cards.findIndex(z=>z.n===x.c.n)}" aria-label="${esc(x.c.n)}"><i>${esc(a.slice(0,1))}</i><span>${esc(nm)}</span></button>`)})});return L.length>1?`<div class="ctabs">${L.join('')}</div>`:''})();
   return `<div class="mcs">${strip}</div>
   <div class="pnl flow"><div class="fh"><div><i>${+cur.ym.slice(5)} 月預估結餘</i><b class="big ${cur.net<0?'bad':'in'}">${sg(cur.net)}</b><div class="fsub">${cur.net<0?'卡費扣款前，還需補 '+money(-cur.net):'付完卡費與其他支出後仍有餘額'}</div></div><span class="rs ${cur.net<0?'no':'yes'}">${cur.net<0?'資金不足':'資金充足'}</span></div>
    <div class="fs in"><span>收入</span><b>${sg(cur.inc)}</b></div>${incs||'<div class="fr mu">沒有預計收入</div>'}
    <div class="fs bad"><span>支出</span><b>${sg(-(cur.out+cur.card))}</b></div>
-   <div class="sech"><b>信用卡</b><span class="mu">卡費 ${money(totDue)}・<span class="${cur.card?'bad':'in'}">${cur.card?'還差 '+sg(-cur.card):'活存足夠'}</span></span></div>${groups}
+   <div class="sech"><b>信用卡</b><span class="mu">卡費 ${money(totDue)}・<span class="${cur.card?'bad':'in'}">${cur.card?'還差 '+sg(-cur.card):'活存足夠'}</span></span></div>${tabs}${groups}
    ${outs?`<div class="fl2">其他支出　${sg(-cur.out)}</div>${outs}`:''}
    <div class="fadd"><div class="seg sm"><button id="ft1" class="${FT>0?'on':''}" data-act="ft" data-v="1">＋ 收入</button><button id="ft0" class="${FT<0?'on':''}" data-act="ft" data-v="-1">－ 支出</button></div>
     <div class="g2"><input id="mn" placeholder="項目"><input id="ma" class="mny" inputmode="decimal" placeholder="金額"></div><button class="sm" data-act="ma" style="width:100%">新增到 ${+cur.ym.slice(5)} 月</button></div></div>`}
@@ -720,16 +819,7 @@ function settings(){
    ${c.note?`<div class="mu">${esc(c.note)}</div>`:''}
    ${c.perks.map((p,pi)=>`<div class="pk"><input data-pk="${ci},${pi},n" value="${esc(p.n)}"><input type="number" step="0.1" data-pk="${ci},${pi},r" value="${p.r}"><button class="x" data-act="pdl" data-i="${ci}" data-j="${pi}">✕</button><input class="pn" data-pk="${ci},${pi},note" value="${esc(p.note||'')}" placeholder="條件／上限"></div>`).join('')}
    <button class="s sm" data-act="pa" data-i="${ci}">＋ 新增權益</button></details>`).join('')}
-  <div class="pnl"><h3>已存店家</h3>${S.places.map((p,i)=>`<div class="row"><span>${esc(p.n)}</span><button class="x" data-act="pd" data-i="${i}">刪除</button></div>`).join('')||'<div class="mu">在記帳畫面按「把目前位置存成這間店」新增</div>'}</div>
   <div class="pnl"><h3>配色</h3>${Object.keys(TH).map(k=>{const c=TH[k][1];return `<button data-act="th" data-v="${k}" style="background:${c.ac};color:${c.bg};margin:4px 6px 4px 0;outline:${S.theme===k?'3px solid '+c.tx:'none'};outline-offset:2px">${TH[k][0]}</button>`}).join('')}</div>
-  <div class="pnl"><h3>發票匯入（載具／發票管家）</h3><div class="mu">在載具 App 或財政部電子發票平台匯出消費明細（CSV），或把發票清單複製下來，匯入後每筆都會問你要不要記帳。已處理過的發票不會重複詢問。</div>
-  <button data-act="invcam" style="width:100%;margin:10px 0 0">📷 拍照／上傳發票照片</button>
-  <div class="mu" style="margin:4px 0 8px">照片請讓發票上的兩個 QR Code 完整入鏡；辨識後會先讓你確認，按儲存才會記帳。</div>
-  <input type="file" id="inv-file" accept=".csv,.txt,text/csv,text/plain" style="margin:10px 0 6px">
-  <textarea id="inv-txt" rows="4" placeholder="或貼上發票明細，每行一筆，例如：&#10;2026/11/05 全家便利商店 85"></textarea>
-  <div class="g2" style="margin-top:8px"><button class="s" data-act="invclip">從剪貼簿匯入</button><button data-act="invparse">解析貼上內容</button></div>
-  ${(S.inv||[]).length?`<div class="row" style="margin-top:8px"><span>待確認 ${(S.inv||[]).length} 筆</span><span><button class="sm" data-act="invgo">逐筆記帳</button> <button class="x" data-act="invclr">清空</button></span></div>`:''}
-  <div class="mu" style="margin-top:8px">提醒：本頁無法在載具收到發票的當下主動推播；每次開啟 App，若有待確認發票，明細頁最上方會出現提示。</div></div>
   <button class="s" style="width:100%" data-act="csv">匯出 CSV 備份</button>`}
 
 /* ---------- 版面與事件 ---------- */
@@ -786,25 +876,37 @@ function invAdd(list){
   S.inv.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);save();return{add,dup}}
 function invBar(){const n=(S.inv||[]).length;return n?`<div class="ivb" data-act="invgo"><b>🧾 ${n} 筆發票待確認</b><span>逐筆記帳 ›</span></div>`:''}
 function invDone(k){S.inv=(S.inv||[]).filter(x=>x.key!==k);S.invSeen=(S.invSeen||[]).concat(k).slice(-3000);save()}
+function invHist(shop){
+  if(!shop)return null;
+  const L=S.tx.filter(t=>t.amt&&t.shop&&(t.shop===shop||lev(t.shop,shop)<=1)).sort((x,y)=>x.date<y.date?1:-1);return L[0]||null}
 function invNext(){
   const q=S.inv||[];
   if(!q.length){$('#ov').style.display='none';CURINV=null;render();toast('發票都處理完了');return}
   const v=q[0];openSheet();CURINV=v.key;
-  $('#f-d').value=v.date;$('#f-shop').value=v.shop||'';$('#f-amt').value=fm(v.amt);$('#f-dt').value=v.dt||'';
+  $('#f-d').value=v.date;$('#f-shop').value=v.shop||'';$('#f-amt').value=v.amt?fm(v.amt):'';$('#f-dt').value=v.dt||'';
   if(v.cat&&[...$('#f-cat').options].some(o=>o.value===v.cat))$('#f-cat').value=v.cat;
-  $('#mr').open=!!v.dt;fcalc();
+  const h=invHist(v.shop);
+  if(h&&card(h.pay)){$('#f-pay').value=h.pay;perkOpts();if(h.perk)[...$('#f-perk').options].forEach(o=>{if(o.text===h.perk)o.selected=true});pickPerk()}
+  if(v.no)$('#f-note').value='發票 '+v.no;
+  $('#mr').open=!!v.dt||!!v.no;fcalc();
   $('#sht').textContent=`發票 1／${q.length}：要記這筆嗎？`;
+  const dupT=v.dup?S.tx.find(t=>t.date===v.date&&Math.round(t.amt)===Math.round(v.amt)):null;
+  const msg=v.partial?'只辨識出部分欄位（空白或不對的請補上），再按儲存。':dupT?`同日已有相同金額的紀錄「${esc(dupT.shop||dupT.cat)}」，可能記過了。`:(v.src==='photo'?'依發票照片／截圖辨識，請對照確認每個欄位。':'來自載具／發票匯入，請確認付款方式與類別。');
   const el=$('#f-inv');el.style.display='flex';
-  el.style.flexWrap='wrap';el.innerHTML=`<span>${v.dup?'同日已有相同金額的紀錄，可能記過了。':(v.src==='photo'?'依發票照片辨識，請對照照片確認每個欄位。':'來自載具／發票匯入，請確認付款方式與類別。')}</span><button class="s sm" data-act="invskip">不記這筆</button>${PHOTO[v.key]?`<img src="${PHOTO[v.key]}" alt="發票照片" style="flex-basis:100%;width:100%;max-height:150px;object-fit:contain;border-radius:10px;background:var(--bg)">`:''}`}
+  el.style.flexWrap='wrap';el.innerHTML=`<span style="flex-basis:100%">${msg}${v.warn?`<br><b class="bad">⚠ ${esc(v.warn)}</b>`:''}</span>${dupT?`<button class="s sm" data-act="invfill" data-id="${dupT.id}">用發票內容更新該筆</button>`:''}<button class="s sm" data-act="invskip">不記這筆</button>${PHOTO[v.key]?`<img src="${PHOTO[v.key]}" alt="發票照片" style="flex-basis:100%;width:100%;max-height:150px;object-fit:contain;border-radius:10px;background:var(--bg)">`:''}`}
 function invImport(txt,src){
   const list=invParse(txt);
   if(!list.length){toast('沒有讀到發票，請確認內容含日期與金額');return}
   const r=invAdd(list);toast(`${src}：新增 ${r.add} 筆待確認${r.dup?`，略過重複 ${r.dup} 筆`:''}`);
   if(r.add){if(TAB===3)settings();invNext()}else if(TAB===3)settings()}
 document.addEventListener('click',async e=>{
-  const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;
+  const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,id=Number(b.dataset.id);
   if(a==='invgo')invNext();
   else if(a==='invskip'){if(CURINV){invDone(CURINV);CURINV=null}invNext()}
+  else if(a==='invfill'){const t=S.tx.find(x=>x.id===id),v=(S.inv||[]).find(x=>x.key===CURINV);
+    if(t&&v){const shop=$('#f-shop').value.trim(),dt=$('#f-dt').value.trim();if(shop)t.shop=shop;if(dt)t.dt=dt;if(v.no)t.inv=v.no;
+      if(v.raw&&shop){(S.brandMap=S.brandMap||{})[v.raw]=shop}
+      invDone(v.key);if(PHOTO[v.key]){URL.revokeObjectURL(PHOTO[v.key]);delete PHOTO[v.key]}CURINV=null;save();toast('已更新「'+(t.shop||'')+'」的店名與明細');setTimeout(invNext,250)}}
   else if(a==='invparse'){const v=($('#inv-txt')||{}).value||'';if(!v.trim()){toast('請先貼上發票明細');return}invImport(v,'貼上內容')}
   else if(a==='invclip'){try{invImport(await navigator.clipboard.readText(),'剪貼簿')}catch(x){toast('無法讀取剪貼簿，請改用貼上或選檔案')}}
   else if(a==='invcam'){const f=$('#inv-img');if(f)f.click()}
@@ -848,37 +950,100 @@ function invQr(texts){
   const nm=[];
   for(let i=0;i+2<tok.length;i+=3){if(/^[\d.]+$/.test(tok[i+1])&&/^-?[\d.]+$/.test(tok[i+2])){let n=tok[i];if(enc==='2'){try{n=new TextDecoder().decode(Uint8Array.from(atob(n),c=>c.charCodeAt(0)))}catch(e){}}nm.push(n)}}
   return{no,date,amt,seller,shop:(S.sellers||{})[seller]||'',dt:[...new Set(nm)].slice(0,8).join('、')}}
+/* ---- 載具 App「發票明細」截圖：本機文字辨識，不經任何 AI 服務 ---- */
+let _tess,_wk;
+function invTess(){if(window.Tesseract)return Promise.resolve();return _tess||(_tess=new Promise((ok,no)=>{const q=document.createElement('script');q.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';q.onload=ok;q.onerror=()=>{_tess=null;no(new Error('load'))};document.head.appendChild(q)}))}
+async function invWorker(){
+  if(_wk)return _wk;
+  await invTess();
+  const lg=m=>{if(m.status==='recognizing text')toast('文字辨識中 '+Math.round(m.progress*100)+'%');else if(/load|init/.test(m.status))toast('準備辨識元件…（第一次較久，之後會快取）')};
+  try{_wk=await Tesseract.createWorker('chi_tra+eng',1,{logger:lg})}
+  catch(e){_wk=await Tesseract.createWorker('chi_tra',1,{logger:lg,langPath:'https://cdn.jsdelivr.net/npm/@tesseract.js-data/chi_tra/4.0.0_best_int'})}
+  return _wk}
+async function invWorkerEnd(){if(_wk){try{await _wk.terminate()}catch(e){}_wk=null}}
+function invPrep(img){
+  const W=img.naturalWidth,H=img.naturalHeight,k=Math.max(.6,Math.min(2,1500/W)),cv=document.createElement('canvas');
+  cv.width=Math.round(W*k);cv.height=Math.round(H*k);const cx=cv.getContext('2d',{willReadFrequently:true});
+  cx.drawImage(img,0,0,cv.width,cv.height);
+  const d=cx.getImageData(0,0,cv.width,cv.height),a=d.data;
+  for(let i=0;i<a.length;i+=4){let g=.299*a[i]+.587*a[i+1]+.114*a[i+2];g=g<150?g*.7:Math.min(255,g*1.12+10);a[i]=a[i+1]=a[i+2]=g}
+  cx.putImageData(d,0,0);return cv}
+function invLines(t){
+  let x=String(t).replace(/＄/g,'$').replace(/[×✕✖]/g,'x');
+  for(let i=0;i<3;i++)x=x.replace(/([\u4e00-\u9fff0-9])[ \t]+(?=[\u4e00-\u9fff])/g,'$1').replace(/([\u4e00-\u9fff])[ \t]+(?=[0-9A-Za-z$])/g,'$1 ');
+  return x.split('\n').map(l=>l.replace(/[ \t]+/g,' ').trim()).filter(Boolean)}
+const invDig=s=>s.replace(/[OoQ]/g,'0').replace(/[Il|]/g,'1').replace(/S/g,'5').replace(/B/g,'8');
+function invShot(text){
+  const L=invLines(text),r={no:'',date:'',amt:0,sum:0,shop:'',brand:'',branch:'',company:'',items:[],dt:'',seller:'',isShot:/發票明細|消費品項|載具/.test(text)};
+  let ni=-1;
+  L.forEach((l,i)=>{if(ni>=0)return;const m=l.match(/([A-Z]{2})[\s-]?([0-9OoIl|SBQ]{8})(?![0-9A-Za-z])/);if(m){const d=invDig(m[2]);if((d.match(/\d/g)||[]).length===8){r.no=m[1]+d;ni=i}}});
+  for(const l of L){const m=l.match(/(\d{4})\s*[\/\-.]\s*(\d{1,2})\s*[\/\-.]\s*(\d{1,2})/);if(m){r.date=invD(`${m[1]}-${m[2]}-${m[3]}`);if(r.date)break}}
+  // 店名：發票號碼下一行是品牌，再下一行是公司全名＋分店
+  const cjk=l=>/[\u4e00-\u9fff]{2,}/.test(l),isCo=l=>/公司|商行|企業|有限|分公司/.test(l),notMeta=l=>!/\d{4}\s*[\/\-.]\s*\d|載具|總計|消費品項|發票|\$/.test(l);
+  const start=ni>=0?ni+1:0;
+  for(let i=start;i<Math.min(L.length,start+5);i++){const l=L[i];if(!cjk(l)||!notMeta(l))continue;if(isCo(l)){if(!r.company)r.company=l}else if(!r.brand)r.brand=l}
+  if(!r.brand&&r.company){r.brand=r.company.replace(/(股份)?有限公司.*$/,'').replace(/^.{0,4}(?=.{3,})/,x=>x)}
+  const bm=r.company.match(/公司\s*([\u4e00-\u9fff0-9A-Za-z]{2,12}?(?:分店|門市|分公司|店|館|站|所|處|廠))$/);
+  if(bm)r.branch=bm[1];
+  {// 品牌名與公司全名互相對照，修正單字辨識錯誤（例：崴↔藏）
+    const co=r.company.replace(/(股份)?有限公司.*$|公司.*$/,'');
+    if(r.brand&&co&&!co.includes(r.brand)){const n=r.brand.length;for(let i=0;i+n<=co.length;i++){const sub=co.slice(i,i+n);if(lev(sub,r.brand)<=1){r.brand=sub;break}}}}
+  r.shop=r.brand+((r.branch&&!r.brand.includes(r.branch))?r.branch:'');
+  // 品項：「名稱 $小計 x數量 金額」
+  L.forEach(l=>{if(/總計|消費品項|合計/.test(l))return;
+    const m=l.match(/^(.+?)\s*\$\s*([\d,]+)\s*(?:x\s*(\d+))?\s*(?:([\d,]+))?$/i);if(!m)return;
+    const n=m[1].trim();if(n.length<1||/載具|發票/.test(n))return;
+    const q=+m[3]||1,a=num(m[4]||m[2]);if(a>0)r.items.push({n,q,a})});
+  r.sum=r.items.reduce((q,x)=>q+x.a,0);
+  for(const l of L){if(/總\s*計|合\s*計|消費品項/.test(l)){const t=[...l.matchAll(/\$\s*([\dOoIl,]+)/g)].pop();if(t){r.amt=num(invDig(t[1]));break}}}
+  if(!r.amt)r.amt=r.sum;
+  r.warn=r.sum&&r.amt&&r.sum!==r.amt?`品項加總 ${fmt(r.sum)} 與總計 ${fmt(r.amt)} 不同，請核對`:'';
+  r.dt=r.items.map(x=>`${x.n}${x.q>1?'×'+x.q:''} $${fmt(x.a)}`).join('、');
+  return r}
+// 以使用者確認過的店名修正辨識錯字（例如「崴」→「藏」只需改一次）
+const lev=(a,b)=>{const d=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t}}return d[b.length]};
+function invFix(raw){
+  if(!raw)return '';const mp=S.brandMap||{};
+  if(mp[raw])return mp[raw];
+  const k=Object.keys(mp).find(x=>Math.abs(x.length-raw.length)<=1&&lev(x,raw)<=1&&raw.length>=3);
+  return k?mp[k]:raw}
 async function invOcr(img){
-  if(!confirm('讀不到發票 QR Code。要改用文字辨識嗎？\n（需下載約十幾 MB 的語言資料，較慢，也比較不準，結果請務必檢查）'))return null;
-  toast('文字辨識中，請稍候…');
-  await new Promise((ok,no)=>{if(window.Tesseract)return ok();const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';s.onload=ok;s.onerror=no;document.head.appendChild(s)});
-  const cv=document.createElement('canvas'),k=Math.min(1,2000/Math.max(img.naturalWidth,img.naturalHeight));cv.width=img.naturalWidth*k;cv.height=img.naturalHeight*k;cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
-  const w=await Tesseract.createWorker('chi_tra+eng');const r=await w.recognize(cv);await w.terminate();
-  const lines=r.data.text.split('\n').map(l=>l.replace(/\s+/g,' ').trim()).filter(Boolean);
-  let date='',amt=0,no='';
-  for(const l of lines){if(!date){const m=l.match(/(\d{3,4})\s*[-\/.年]\s*(\d{1,2})\s*[-\/.月]\s*(\d{1,2})/);if(m)date=invD(`${m[1]}-${m[2]}-${m[3]}`)}
-    const n=l.match(/[A-Za-z]{2}-?\d{8}/);if(!no&&n)no=n[0].toUpperCase().replace('-','')}
-  for(const l of lines){if(/總計|合計|總額|應收|Total/i.test(l)){const m=[...l.matchAll(/[\d,]+/g)].map(x=>num(x[0])).filter(x=>x>0).pop();if(m){amt=m;break}}}
-  const shop=lines.find(l=>/[一-龥]{2,}/.test(l)&&!/發票|電子|統一編號|隨機|格式|交易|明細/.test(l))||'';
-  return{no,date,amt,shop:shop.slice(0,24),dt:'',seller:''}}
+  const w=await invWorker(),cv=invPrep(img);
+  let r=null;
+  for(const psm of ['4','6']){
+    await w.setParameters({tessedit_pageseg_mode:psm,preserve_interword_spaces:'1'});
+    const o=await w.recognize(cv),v=invShot(o.data.text);
+    if(!r)r=v;else{for(const k of ['no','date','shop','brand','branch','company'])if(!r[k]&&v[k])r[k]=v[k];if(!r.amt&&v.amt)r.amt=v.amt;if(!r.items.length&&v.items.length){r.items=v.items;r.dt=v.dt;r.sum=v.sum}}
+    if(r.date&&r.amt&&r.shop&&r.no)break}
+  r.raw=r.shop;r.shop=invFix(r.shop);return r}
 async function invPhotos(files){
-  let added=0,fail=0,first=true;
-  for(const f of files){
-    try{
-      toast('辨識發票中…');
-      const url=URL.createObjectURL(f),img=new Image();img.src=url;await img.decode();
-      let v=invQr(await invScan(img));
-      if(!v){try{v=await invOcr(img)}catch(e){v=null}}
-      if(!v||!v.date||!(v.amt>0)){fail++;URL.revokeObjectURL(url);continue}
-      const key0=v.no||`${v.date}|${v.shop}|${v.amt}`;
-      const r=invAdd([v]);
-      if(r.add){added++;const q=S.inv.find(x=>x.no===v.no&&v.no||x.key.startsWith(key0));if(q){q.src='photo';PHOTO[q.key]=url}}
-      else toast('這張發票已處理過或已在待確認清單')
-    }catch(e){fail++}}
+  let added=0,partial=0,fail=0,err='';
+  try{
+    for(const f of files){
+      let url='';
+      try{
+        toast('辨識發票中…');
+        url=URL.createObjectURL(f);const img=new Image();img.src=url;await img.decode();
+        let v=invQr(await invScan(img));
+        if(!v){try{v=await invOcr(img)}catch(e){err=e&&e.message==='load'?'net':'ocr';v=null}}
+        if(!v||(!v.date&&!(v.amt>0)&&!v.shop)){fail++;URL.revokeObjectURL(url);continue}
+        const ok=v.date&&v.amt>0;
+        if(!v.date)v.date=today();
+        const key0=v.no||`${v.date}|${v.shop}|${v.amt}`;
+        if(ok){
+          const r=invAdd([v]);
+          if(r.add){added++;const q=S.inv.find(x=>(v.no&&x.no===v.no)||x.key.startsWith(key0));if(q){q.src='photo';q.raw=v.raw||'';q.warn=v.warn||'';q.no=v.no||q.no;PHOTO[q.key]=url}}
+          else toast('這張發票已處理過或已在待確認清單')
+        }else{
+          // 只辨識出一部分：照樣帶入表單，讓你補齊，不要整張丟掉
+          v.key=key0+'#p'+Date.now();v.cat=invCat((v.shop||'')+' '+(v.dt||''));v.src='photo';v.partial=1;v.amt=v.amt||0;
+          S.inv=S.inv||[];S.inv.push(v);save();PHOTO[v.key]=url;partial++}
+      }catch(e){fail++;if(url)URL.revokeObjectURL(url)}}
+  }finally{await invWorkerEnd()}
   $('#ts').style.display='none';
   if(TAB===3)settings();
-  if(added)invNext();
-  else if(fail)toast(`${fail} 張照片讀不到發票資料，請拍清楚一點（QR Code 要完整入鏡）`)}
+  if(added||partial)invNext();
+  else if(fail)toast(err==='net'?'文字辨識元件載入失敗，請確認網路後再試一次':`${fail} 張照片讀不到任何發票資料，請確認截圖包含發票號碼、日期與總計`)}
 
 const TITLES=['隨手記帳','','卡費與金流','設定'];
 function render(){({0:home,2:stats,3:settings})[TAB]()}
@@ -946,6 +1111,16 @@ document.addEventListener('change',e=>{
 
 document.addEventListener('input',e=>{if(e.target.id!=='kw')return;KW=e.target.value;const c=e.target.selectionStart;home();const k=$('#kw');k.focus();k.setSelectionRange(c,c)});
 
+
+/* ---------- 信用卡小頁籤：跳到指定卡片 ---------- */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act="cjump"]');if(!b)return;
+  const el=document.getElementById('cb-'+b.dataset.i);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
+let _ct=0;
+window.addEventListener('scroll',()=>{if(_ct)return;_ct=requestAnimationFrame(()=>{_ct=0;
+  const tabs=$$('.ctab');if(!tabs.length)return;
+  let cur=null;tabs.forEach(t=>{const el=document.getElementById('cb-'+t.dataset.i);if(el&&el.getBoundingClientRect().top<=150)cur=t});
+  tabs.forEach(t=>t.classList.toggle('on',t===(cur||tabs[0])))})},{passive:true});
+
 /* ---------- 記帳表單 ---------- */
 let FW=null;
 function draftWarn(){
@@ -1000,7 +1175,7 @@ $('#f-save').onclick=()=>{
   if(n>1)S.inst.push({id:Date.now()+1,a:1,tx:t.id,date:t.date,pay,item:t.shop||t.cat,n,total:a,per:t.ia,first:t.first||''});
   S.tx.push(t);S.lastPay=pay;(S.lp=S.lp||{})[pay]=$('#f-perk').value;save();EID=null;$('#ov').style.display='none';HM=t.date.slice(0,7);render();toast('已儲存')};
 
-{const _s=$('#f-save').onclick;$('#f-save').onclick=()=>{const k=CURINV,n0=S.tx.length,v=k&&(S.inv||[]).find(x=>x.key===k);_s();if(k&&S.tx.length>n0){const t=S.tx[S.tx.length-1];if(v&&v.seller&&t&&t.shop){(S.sellers=S.sellers||{})[v.seller]=t.shop}invDone(k);if(PHOTO[k]){URL.revokeObjectURL(PHOTO[k]);delete PHOTO[k]}CURINV=null;setTimeout(invNext,250)}}}
+{const _s=$('#f-save').onclick;$('#f-save').onclick=()=>{const k=CURINV,n0=S.tx.length,v=k&&(S.inv||[]).find(x=>x.key===k);_s();if(k&&S.tx.length>n0){const t=S.tx[S.tx.length-1];if(v&&v.seller&&t&&t.shop){(S.sellers=S.sellers||{})[v.seller]=t.shop}if(v&&v.raw&&t&&t.shop){(S.brandMap=S.brandMap||{})[v.raw]=t.shop}if(v&&v.no&&t)t.inv=v.no;invDone(k);if(PHOTO[k]){URL.revokeObjectURL(PHOTO[k]);delete PHOTO[k]}CURINV=null;setTimeout(invNext,250)}}}
 /* ---------- CSV ---------- */
 function exportCsv(f,t,tag){
   const H=['消費日期','付款方式','類別','消費店名','消費明細','付款金額','支出','手續費','收入','分期數','分期金額','卡片權益','回饋%','回饋金額','當日支出','備註','回饋入帳','付款狀態'];
