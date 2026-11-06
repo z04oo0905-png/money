@@ -694,22 +694,28 @@ async function cloudSync(manual){
       const sl={},sr={},m=mergeState(S,R,sl);mergeState(R,S,sr);
       pulled=sl.add+sl.upd+sl.del;push=(sr.add+sr.upd+sr.del)>0;st=sl;
       if(pulled){replaceS(m);try{localStorage.setItem('acct2',JSON.stringify(S))}catch(e){}
-        applyTheme();const a=document.activeElement;if(!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)))render()}}
+        applyTheme();const a=document.activeElement;if(!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)))render();else CS.pr=1}}
     if(push)await csReq('PUT',{data:S});
     CS.last=Date.now();CS.err='';
     if(manual)toast(pulled?`已同步：新增 ${st.add}、更新 ${st.upd}、刪除 ${st.del} 筆`:'已同步，資料是最新的');
   }catch(e){CS.err=e&&e.name==='AbortError'?'連線逾時':(e.message||'同步失敗');if(manual)toast('同步失敗：'+CS.err)}
   finally{CS.busy=0;if(typeof TAB!=='undefined'&&TAB===3&&!/INPUT|SELECT|TEXTAREA/.test((document.activeElement||{}).tagName||''))settings();
     if(CS.again){CS.again=0;cloudSoon()}}}
-function cloudSoon(){if(!CS.code)return;clearTimeout(CS.t);CS.t=setTimeout(()=>cloudSync(),1500)}
+function cloudSoon(){if(!CS.code)return;CS.dirty=1;clearTimeout(CS.t);CS.t=setTimeout(()=>cloudSync(),300)}
 function csPanel(){
   const tm=CS.last?new Date(CS.last).toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}):'';
   return `<div class="pnl"><h3>雲端自動同步</h3><div class="mu">${CS.err?`<span style="color:var(--rd)">⚠ ${esc(CS.err)}</span>`:CS.busy?'同步中…':tm?'已自動同步．上次 '+tm:'自動同步已啟用'}　App 與網頁版會自動合併，不需任何設定。</div>
    <button class="s" style="width:100%;margin-top:8px" data-act="csnow">立即同步</button></div>`}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act="csnow"]');if(b)cloudSync(true)});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)cloudSync()});
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){const a=document.activeElement;if(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)&&a.blur)a.blur();clearTimeout(CS.t);cloudSync()}  /* 切到別的 App 前，先把輸入中的內容存起來並推上雲端 */
+  else cloudSync()});
+addEventListener('pagehide',()=>{clearTimeout(CS.t);cloudSync()});
+addEventListener('pageshow',()=>cloudSync());
+addEventListener('focus',()=>cloudSync());
 addEventListener('online',()=>cloudSync());
-setInterval(()=>{if(!document.hidden)cloudSync()},45000);
+document.addEventListener('focusout',()=>{if(CS.pr){CS.pr=0;setTimeout(()=>{const a=document.activeElement;if(!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)))render()},50)}});
+setInterval(()=>{if(!document.hidden)cloudSync()},20000);
 setTimeout(()=>cloudSync(),400);
 const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
 const card=n=>S.cards.find(c=>c.n===n);
