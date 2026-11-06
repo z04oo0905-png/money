@@ -3,6 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>瑄 Pocket</title>
+<script>
+/* ====== 雲端同步設定：把 Upstash Redis 的 REST URL 與 TOKEN 貼在下面兩個引號裡（只需貼一次） ====== */
+const CLOUD_URL='';
+const CLOUD_TOKEN='';
+</script>
 <meta name="apple-mobile-web-app-title" content="瑄 Pocket">
 <meta name="application-name" content="瑄 Pocket">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -676,14 +681,16 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncLS()})
 /* ---------- 雲端自動同步（/api/sync）：沿用 mergeState，逐筆以較晚修改為準 ---------- */
 const CS={code:'auto',busy:0,again:0,t:null,last:0,err:''};
 async function csReq(method,body){
+  if(!CLOUD_URL||!CLOUD_TOKEN)throw new Error('尚未設定雲端：請把 Upstash 的 URL 與 TOKEN 填進 index.html 最上面的 CLOUD_URL、CLOUD_TOKEN');
   const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),15000);
   try{
-    let r;try{r=await fetch('/api/sync',{method,headers:{'x-sync-code':CS.code,'content-type':'application/json'},body:body?JSON.stringify(body):undefined,signal:ac.signal,cache:'no-store'})}
-    catch(e){if(e&&e.name==='AbortError')throw e;throw new Error('無法連線到伺服器（網路中斷？）')}
+    let r;try{r=await fetch(CLOUD_URL,{method:'POST',headers:{Authorization:'Bearer '+CLOUD_TOKEN,'content-type':'application/json'},body:JSON.stringify(method==='GET'?['GET','pocket:main']:['SET','pocket:main',JSON.stringify(body.data)]),signal:ac.signal,cache:'no-store'})}
+    catch(e){if(e&&e.name==='AbortError')throw e;throw new Error('無法連線到雲端（網路中斷，或 URL 填錯）')}
     let j=null;try{j=await r.json()}catch(e){}
-    if(!r.ok)throw new Error((j&&j.error)||(r.status===404?'找不到 /api/sync：api/sync.js 沒有部署到這個網址':r.status===401||r.status===403?'API 被 Vercel 保護擋住（請改用正式網址，或到 Vercel 關閉 Deployment Protection）':'伺服器錯誤 HTTP '+r.status));
-    if(!j||typeof j!=='object')throw new Error('/api/sync 沒有回傳資料：可能沒部署，或被 Vercel 保護頁擋住');
-    return j}
+    if(r.status===401||r.status===403)throw new Error('TOKEN 不正確，請重新複製 Upstash 的 TOKEN');
+    if(!r.ok||!j||j.error)throw new Error((j&&j.error)||'雲端錯誤 HTTP '+r.status);
+    if(method==='GET'){let d=null;try{d=j.result?JSON.parse(j.result):null}catch(e){}return{data:d}}
+    return{ok:true}}
   finally{clearTimeout(tm)}}
 async function cloudSync(manual){
   if(!CS.code)return;
