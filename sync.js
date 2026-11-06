@@ -19,6 +19,12 @@ async function redis(cmd) {
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   try {
+    if (req.method === 'GET' && req.query && req.query.ping !== undefined) {
+      // 診斷：瀏覽器開 /api/sync?ping 可確認 API 與 Redis 是否正常
+      if (!URL_ || !TOKEN) return res.status(200).json({ api: 'ok', redis: '未設定（缺少環境變數）' });
+      try { return res.status(200).json({ api: 'ok', redis: await redis(['PING']) }); }
+      catch (e) { return res.status(200).json({ api: 'ok', redis: '連線失敗：' + e.message }); }
+    }
     if (!URL_ || !TOKEN) return res.status(500).json({ error: '伺服器尚未設定 Redis（缺少環境變數）' });
     // 個人使用：所有裝置固定讀寫同一份資料，不需要代碼
     const key = 'pocket:main';
