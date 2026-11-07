@@ -869,7 +869,7 @@ function home(){
   +(srch?`<div class="mu" style="margin:0 4px 4px">找到 ${arr.length} 筆，支出合計 ${money(arr.reduce((s,t)=>s+exp(t),0))}${arr.some(t=>t.inc)?`，收入合計 ${money(arr.reduce((s,t)=>s+(t.inc||0),0))}`:''}</div>`:'')
   +(!full?cal(mm):'')
   +(FLT===0&&!srch?`<div class="pnl"><div class="row" style="border:0;padding:0 0 4px"><b>${+HM.slice(5)} 月回饋</b><span class="mu">依消費日期歸月</span></div><div class="tl"><div><i>當月回饋</i><b>${money(due)}</b></div><div><i>已收回饋</i><b class="in">${money(gotm)}</b></div><div><i>未回饋</i><b class="${pdm>=.5?'bad':''}">${money(pdm)}</b></div></div></div>`:'')+sum+stale()
-  +(ks.length?ks.map(k=>`<div class="dh" id="d-${k}"><span>${full?k.replace(/-/g,'/'):k.slice(5).replace('-','/')} 週${dow[new Date(k+'T00:00:00').getDay()]}</span><span>當日支出 ${money(dayE[k])}</span></div><div class="pn">${days[k].sort((a,b)=>b.id-a.id).map(entry).join('')}</div>`).join(''):'<div class="em">'+(FLT===1?'🎉 沒有未繳款的消費':FLT===2?'🎉 目前沒有未回饋':'這個月還沒有紀錄<br>按下方「＋ 記一筆」開始')+'</div>')}
+  +(ks.length?ks.map(k=>`<div class="dh" id="d-${k}"><span>${full?k.replace(/-/g,'/'):k.slice(5).replace('-','/')} 週${dow[new Date(k+'T00:00:00').getDay()]}</span><span>當日支出 ${money(dayE[k])}</span></div><div class="pn">${days[k].sort((a,b)=>((b.ct||b.id)-(a.ct||a.id))||(b.id-a.id)).map(entry).join('')}</div>`).join(''):'<div class="em">'+(FLT===1?'🎉 沒有未繳款的消費':FLT===2?'🎉 目前沒有未回饋':'這個月還沒有紀錄<br>按下方「＋ 記一筆」開始')+'</div>')}
 
 /* ---------- 卡費 ---------- */
 /* 繳款月：結帳日 16 號以後的卡，帳單約在次月繳款（可在設定逐卡修改）；分頁月份＝繳款月 */
@@ -1430,11 +1430,11 @@ $('#f-save').onclick=()=>{
   if(!a&&$('#f-cur').value!=='TWD'&&num($('#f-fa').value)>0){toast('匯率還沒換算好，請稍候或直接填台幣金額');return}
   if(!a&&!inc&&!e){toast('請輸入付款金額、我的支出或收入');return}
   if(!a&&e>0&&card($('#f-pay').value))a=e;
-  draftWarn();if(FW&&!confirm(FW.msg))return;
+  draftWarn();
   const n=Math.max(1,Math.floor(num($('#f-n').value))||1),fee=num($('#f-fee').value),rp=num($('#f-rp').value),pay=$('#f-pay').value;
-  const t={id:EID||Date.now(),date:$('#f-d').value||today(),pay,cat:$('#f-cat').value,shop:$('#f-shop').value.trim(),dt:$('#f-dt').value,amt:a,ex:e,inc,fee,n,ia:n>1?(num($('#f-ia').value)||Math.round(a/n)):0,first:$('#f-fst').value,perk:card(pay)?$('#f-perk').value:'',note:$('#f-note').value,got:0,rp,ra:Math.floor(a*rp/100)};
+  const t={id:EID||Date.now(),date:$('#f-d').value||today(),pay,cat:$('#f-cat').value,shop:$('#f-shop').value.trim(),dt:$('#f-dt').value,amt:a,ex:e,inc,fee,n,ia:n>1?(num($('#f-ia').value)||Math.round(a/n)):0,first:$('#f-fst').value,perk:card(pay)?$('#f-perk').value:'',note:$('#f-note').value,got:0,rp,ra:Math.floor(a*rp/100),ct:Date.now()};
   {const c=$('#f-cur').value,fa=num($('#f-fa').value);if(c!=='TWD'&&fa>0){t.fx={c,a:fa,m:$('#f-amt').dataset.fxm==='1'?1:0};const R=(FXR&&FXR.c===c&&FXR.d===t.date)?FXR:(FXE&&FXE.c===c&&FXE.d===t.date&&FXE.r?FXE:null);if(R){t.fx.r=R.r;t.fx.rd=R.rd||t.date}}}
-  if(EID){const o=S.tx.find(x=>x.id===EID);if(o){t.got=o.got;t.up=o.up||0;t.ok=o.ok||0}S.tx=S.tx.filter(x=>x.id!==EID)}
+  if(EID){const o=S.tx.find(x=>x.id===EID);if(o){t.got=o.got;t.up=o.up||0;t.ok=o.ok||0;t.ct=o.ct||o.id}S.tx=S.tx.filter(x=>x.id!==EID)}
   S.inst=S.inst.filter(i=>!(i.a&&i.tx===t.id));
   if(n>1)S.inst.push({id:Date.now()+1,a:1,tx:t.id,date:t.date,pay,item:t.shop||t.cat,n,total:a,per:t.ia,first:t.first||''});
   S.tx.push(t);S.lastPay=pay;(S.lp=S.lp||{})[pay]=$('#f-perk').value;save();EID=null;$('#ov').style.display='none';HM=t.date.slice(0,7);render();toast('已儲存')};
